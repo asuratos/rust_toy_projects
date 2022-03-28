@@ -18,8 +18,6 @@ impl Juror {
     pub fn judge(&self) -> i32 {
         let mut rng = rand::thread_rng();
 
-        // println!("{:?}", rng.gen::<f32>());
-
         if rng.gen::<f32>() <= self.accuracy {
             return 1;
         }
@@ -31,7 +29,7 @@ impl Judgement {
     pub fn new_uniform(size: usize, accuracy: f32) -> Judgement {
         let mut jury: Vec<Juror> = Vec::new();
 
-        for i in 0..size {
+        for _ in 0..size {
             jury.push(Juror::new(accuracy))
         }
 
@@ -49,7 +47,6 @@ impl Judgement {
 }
 
 fn main() {
-
     const ITERATIONS: usize = 10_000;
     const JURY_SIZE: usize = 1000;
 
